@@ -2,26 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: cubano;
+  src: url('../assets/fonts/Cubano.ttf');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: regular;
+  src: url('../assets/fonts/OakSans-Regular.ttf');
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: medium;
+  src: url('../assets/fonts/OakSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: bold;
+  src: url('../assets/fonts/OakSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: blackk;
+  src: url('../assets/fonts/OakSans-Black.ttf');
+}
+
+.cubano {
+  font-family: cubano;
+
+}
+
+.regular {
+  font-family: regular;
+
+}
+
+.medium {
+  font-family: medium;
+
+}
+
+.bold {
+  font-family: bold;
+
+}
+
+.blackk {
+  font-family: blackk;
+
+}
+
+*{
+  font-family: regular;
+}
+
+html{
+  overflow-x: hidden;
+  background-color: #131313;
 }
