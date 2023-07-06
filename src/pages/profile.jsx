@@ -1,13 +1,13 @@
 'use client'
-import Header from '@/components/Header'
 import React from 'react';
+import Header from '@/components/Header'
 import { auth } from '../firebase'
 import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { motion } from 'framer-motion';
 
 
-const profile = () => {
+const Profile = () => {
 
     const [user, setuser] = useAuthState(auth)
 
@@ -31,4 +31,4 @@ const profile = () => {
     )
 }
 
-export default profile
+export default Profile
