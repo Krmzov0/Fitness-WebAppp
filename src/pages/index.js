@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/Header';
-import { auth } from './firebase'
+import { auth } from '../firebase'
 import { signOut } from 'firebase/auth'
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth'
