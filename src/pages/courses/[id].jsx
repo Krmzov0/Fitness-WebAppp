@@ -85,7 +85,7 @@ const CourseDetails = () => {
                         <ArrowLeft variant='Broken' className='top-[1px] relative cursor-pointer' size={32} color='#fff' />
                     </div>
                     {courseData && (
-                        <div>
+                        <div key={index}>
                             {courseData.workoutPlanData.map((workout, index) => (
                                 <h1 className='text-4xl cubano'>{workout.name}</h1>
                             ))}

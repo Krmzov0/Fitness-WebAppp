@@ -7,7 +7,6 @@ import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { motion } from 'framer-motion';
 
-
 const Profile = () => {
 
     const [user, setuser] = useAuthState(auth)
