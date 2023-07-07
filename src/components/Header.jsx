@@ -94,7 +94,7 @@ const Header = () => {
                 </div>
                 <div className=' hidden sm:flex h-4 mx-4 w-[1px] bg-[#dbdbdb84] relative'></div>
                 {user ?
-                    <User size="25" variant='Broken' color="#fff" /> :
+                    <User size="25" variant='Broken' className='hidden sm:flex' color="#fff" /> :
                     <motion.div whileHover={{ scale: 1.2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         <button className='hidden ml-1 sm:flex text-[#000] px-4 py-2 bg-[#C7FB04] rounded-xl medium cursor-pointer' onClick={signInWithGoogle} >Sign up</button>
                     </motion.div>
