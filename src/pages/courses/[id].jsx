@@ -85,9 +85,9 @@ const CourseDetails = () => {
                         <ArrowLeft variant='Broken' className='top-[1px] relative cursor-pointer' size={32} color='#fff' />
                     </div>
                     {courseData && (
-                        <div key={index}>
+                        <div>
                             {courseData.workoutPlanData.map((workout, index) => (
-                                <h1 className='text-4xl cubano'>{workout.name}</h1>
+                                <h1 key={index} className='text-4xl cubano'>{workout.name}</h1>
                             ))}
                         </div>
                     )}
