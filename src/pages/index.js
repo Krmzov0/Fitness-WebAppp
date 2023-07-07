@@ -34,24 +34,24 @@ function Home() {
             <Image alt='' src='/img.png' width={250} height={250} />
           </motion.div>
           <h1 className='flex sm:flex-row flex-col text-6xl sm:text-8xl items-start sm:items-center gap-x-0 sm:gap-x-3 z-10  justify-center'>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>Train</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>Train</motion.span>
             <div className='flex items-center gap-x-3 sm:gap-x-5'>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>like</motion.span>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>an</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>like</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>an</motion.span>
             </div>
             <div className='flex items-center gap-x-3 sm:gap-x-5'>
-              <motion.span className='cubano text-[#C7FB04]' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>Athlete</motion.span>
+              <motion.span className='cubano text-[#C7FB04]' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>Athlete</motion.span>
             </div>
           </h1>
 
           <h1 className='flex sm:flex-row flex-col text-6xl sm:text-8xl items-start sm:items-center gap-x-0 sm:gap-x-5 justify-center z-10'>
             <div className='flex items-center gap-x-3 sm:gap-x-5'>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>Look</motion.span>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>like</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>Look</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>like</motion.span>
             </div>
             <div className='flex items-center gap-x-3 sm:gap-x-5'>
-              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>a</motion.span>
-              <motion.span className='cubano text-[#C7FB04]' initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>God</motion.span>
+              <motion.span className='text-start sm:text-center cubano' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>a</motion.span>
+              <motion.span className='cubano text-[#C7FB04]' initial={{ opacity: 0, y: 140 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>God</motion.span>
             </div>
           </h1>
         </div>

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { collection, doc, getDocs, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import Header from '@/components/Header';
+import { ArrowLeft } from 'iconsax-react';
 
 const CourseDetails = () => {
     const router = useRouter();
@@ -24,12 +25,13 @@ const CourseDetails = () => {
                     const workoutPlanSnapshot = await getDocs(workoutPlanRef);
 
                     if (!workoutPlanSnapshot.empty) {
-                        // Fetch the first workout_plan document
-                        const workoutPlanDoc = workoutPlanSnapshot.docs[0];
-                        const exercise = workoutPlanDoc.data().exercise;
+                        const workoutPlanData = workoutPlanSnapshot.docs.map((doc) => {
+                            return doc.data();
+                        });
+
                         setCourseData({
                             name: courseSnapshot.data().name,
-                            exercise: exercise,
+                            workoutPlanData: workoutPlanData,
                         });
                     } else {
                         console.log('No workout_plan documents found for this course.');
@@ -49,9 +51,11 @@ const CourseDetails = () => {
                 const mealPlanSnapshot = await getDocs(mealPlanRef);
 
                 if (!mealPlanSnapshot.empty) {
-                    // Fetch the first meal_plan document
-                    const mealPlanDoc = mealPlanSnapshot.docs[0];
-                    setMealPlanData(mealPlanDoc.data());
+                    const mealPlanData = mealPlanSnapshot.docs.map((doc) => {
+                        return doc.data();
+                    });
+
+                    setMealPlanData(mealPlanData);
                 } else {
                     console.log('No meal_plan documents found for this course.');
                 }
@@ -73,17 +77,47 @@ const CourseDetails = () => {
     return (
         <div className="flex flex-col h-screen">
             <Header />
-            <div className="flex gap-x-3 text-white top-40 relative px-10">
-                <div>
-                    <h2>Workout Plan</h2>
-                    <h2>Monday</h2>
-                    <h2>{courseData.exercise}</h2>
+
+
+            <div className="flex flex-col text-white top-32 relative px-10">
+                <div className='flex items-center gap-x-6'>
+                    <div className='backArrow relative trasition-all' onClick={() => router.push('/courses')}>
+                        <ArrowLeft variant='Broken' className='top-[1px] relative cursor-pointer' size={32} color='#fff' />
+                    </div>
+                    {courseData && (
+                        <div>
+                            {courseData.workoutPlanData.map((workout, index) => (
+                                <h1 className='text-4xl cubano'>{workout.name}</h1>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
-                <div>
-                    <h2>Meal Plan</h2>
-                    <h2>Monday</h2>
-                    <p>{mealPlanData.meal}</p>
+                <div className='flex gap-x-3 mt-10'>
+                    <div>
+                        {courseData && (
+                            <div>
+                                <h2>Workout Plan</h2>
+                                {courseData.workoutPlanData.map((workout, index) => (
+                                    <div key={index}>
+                                        <h2>{workout.exercise}</h2>
+                                        <h2>{workout.reps}</h2>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    {mealPlanData && (
+                        <div>
+                            <h2>Meal Plan</h2>
+                            {mealPlanData.map((meal, index) => (
+                                <div key={index}>
+                                    <h2>{meal.meal}</h2>                                    
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
