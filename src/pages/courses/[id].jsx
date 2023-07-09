@@ -1,11 +1,10 @@
-'use client'
-
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { collection, doc, getDocs, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import Header from '@/components/Header';
 import { ArrowLeft } from 'iconsax-react';
+import { checkout } from '../../checkout';
 
 const CourseDetails = () => {
     const router = useRouter();
@@ -15,32 +14,38 @@ const CourseDetails = () => {
 
     useEffect(() => {
         const fetchCourseData = async () => {
-            try {
-                // Fetch the specific course
-                const courseRef = doc(db, 'courses', id);
-                const courseSnapshot = await getDoc(courseRef);
+            // Fetch course and meal plan data
+            if (id) {
+                try {
+                    // Fetch the specific course
+                    const courseRef = doc(db, 'courses', id);
+                    const courseSnapshot = await getDoc(courseRef);
 
-                if (courseSnapshot.exists()) {
-                    const workoutPlanRef = collection(courseRef, 'workout_plan');
-                    const workoutPlanSnapshot = await getDocs(workoutPlanRef);
+                    if (courseSnapshot.exists()) {
+                        const workoutPlanRef = collection(courseRef, 'workout_plan');
+                        const workoutPlanSnapshot = await getDocs(workoutPlanRef);
 
-                    if (!workoutPlanSnapshot.empty) {
-                        const workoutPlanData = workoutPlanSnapshot.docs.map((doc) => {
-                            return doc.data();
-                        });
+                        if (!workoutPlanSnapshot.empty) {
+                            const workoutPlanData = workoutPlanSnapshot.docs.map((doc) => {
+                                return doc.data();
+                            });
 
-                        setCourseData({
-                            name: courseSnapshot.data().name,
-                            workoutPlanData: workoutPlanData,
-                        });
+                            setCourseData({
+                                name: courseSnapshot.data().name,
+                                workoutPlanData: workoutPlanData,
+                            });
+
+                            // Set the selected workout name
+                    
+                        } else {
+                            console.log('No workout_plan documents found for this course.');
+                        }
                     } else {
-                        console.log('No workout_plan documents found for this course.');
+                        console.log('Course not found.');
                     }
-                } else {
-                    console.log('Course not found.');
+                } catch (error) {
+                    console.log('Error fetching course data:', error);
                 }
-            } catch (error) {
-                console.log('Error fetching course data:', error);
             }
         };
 
@@ -64,20 +69,32 @@ const CourseDetails = () => {
             }
         };
 
-        if (id) {
-            fetchCourseData();
-            fetchMealPlanData();
-        }
+        fetchCourseData();
+        fetchMealPlanData();
     }, [id]);
 
     if (!courseData || !mealPlanData) {
         return <div>Loading...</div>;
     }
 
+    const handleCourseClick = () => {
+        router.push(`/courses/${id}/checkout`);
+    };
+
+    const handleBuyNow = () => {
+        checkout({
+            lineItems: [
+              {
+                price: "price_1NRnzmI6xdHmUGn6RIuFNaMX",
+                quantity: 1,
+              },
+            ],
+          });
+    }
+
     return (
         <div className="flex flex-col h-screen">
             <Header />
-
 
             <div className="flex flex-col text-white top-32 relative px-10">
                 <div className='flex items-center gap-x-6'>
@@ -113,11 +130,14 @@ const CourseDetails = () => {
                             <h2>Meal Plan</h2>
                             {mealPlanData.map((meal, index) => (
                                 <div key={index}>
-                                    <h2>{meal.meal}</h2>                                    
+                                    <h2>{meal.meal}</h2>
                                 </div>
                             ))}
                         </div>
                     )}
+
+                    <button onClick={handleBuyNow}>Buy Now</button>
+
                 </div>
             </div>
         </div>

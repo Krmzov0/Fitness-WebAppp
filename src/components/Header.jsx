@@ -66,7 +66,7 @@ const Header = () => {
     }
 
     return (
-        <div className='container absolute mx-auto justify-between items-center px-6 sm:px-12 py-6 sm:py-8 flex z-[999] gap-x-5'>
+        <div className='w-full absolute mx-auto justify-between items-center px-6 sm:px-12 py-6 sm:py-8 flex z-[999] gap-x-5'>
             <div className='flex justify-between items-center w-full sm:w-max'>
                 <div className='cubano text-3xl text-[#fff] cursor-pointer' onClick={() => router.push('/')}><span className='text-[#C7FB04] cubano'>FIT</span>GOD</div>
 
@@ -90,7 +90,6 @@ const Header = () => {
                     {toggleMenu && (<motion.div variants={navLinks} transition={{ delay: 0.4 }}><button onClick={() => router.push('/')} className={router.pathname === '/' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl  sm:text-[#949698] text-[#000] cursor-pointer'}>Home</button></motion.div>)}
                     {toggleMenu && (<motion.div variants={navLinks} transition={{ delay: 0.55 }}><button onClick={() => router.push('/courses')} className={router.pathname === '/courses' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>Courses</button></motion.div>)}
                     {toggleMenu && (<motion.div variants={navLinks} transition={{ delay: 0.65 }}><button onClick={() => router.push('/dashboard')} className={router.pathname === '/dashboard' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>Dashboard</button></motion.div>)}
-                    {toggleMenu && (<motion.div variants={navLinks} transition={{ delay: 0.7 }}><button onClick={() => router.push('/about')} className={router.pathname === '/about' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>About</button></motion.div>)}
                 </div>
                 <div className=' hidden sm:flex h-4 mx-4 w-[1px] bg-[#dbdbdb84] relative'></div>
                 {user ?
@@ -116,7 +115,6 @@ const Header = () => {
                     <div><button onClick={() => router.push('/')} className={router.pathname === '/' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl  sm:text-[#949698] text-[#000] cursor-pointer'}>Home</button></div>
                     <div><button onClick={() => router.push('/courses')} className={router.pathname === '/courses' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>Courses</button></div>
                     <div><button onClick={() => router.push('/dashboard')} className={router.pathname === '/dashboard' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>Dashboard</button></div>
-                    <div><button onClick={() => router.push('/about')} className={router.pathname === '/about' ? 'sm:text-[#fff] text-[#000] sm:text-lg text-5xl cursor-pointer cubano sm:regular' : 'cubano sm:regular sm:text-lg text-5xl sm:text-[#949698] text-[#000] cursor-pointer'}>About</button></div>
                 </div>
                 <div className=' hidden sm:flex h-4 mx-4 w-[1px] bg-[#dbdbdb84] relative'></div>
                 {user ?

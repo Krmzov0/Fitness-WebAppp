@@ -40,24 +40,26 @@ const Courses = () => {
     router.push(`/courses/${courseId}`);
   };
 
+  const handleBuyCourse = (courseId) => {
+    router.push(`/courses/${courseId}/checkout`);
+  };
+
+
   return (
     <div className="flex flex-col text-white h-screen">
       <Header />
       <div className="relative top-32 px-10">
         <div className='flex items-center gap-x-6'>
-          <div className='backArrow relative trasition-all' onClick={() => router.push('/')}>
-            <ArrowLeft variant='Broken' className='top-[1px] relative cursor-pointer' size={32} color='#fff' />
-          </div>
           <h1 className='text-4xl cubano'>Courses</h1>
         </div>
         <div className="flex gap-x-3 mt-3 text-lg">
           {courses.map((course) => (
-            <button
+            <div
               key={course.id}
-              onClick={() => handleCourseClick(course.id)}
             >
-              {course.courseName}
-            </button>
+              <button onClick={() => handleCourseClick(course.id)} className='mr-4'>{course.courseName}</button>
+              <button onClick={() => handleCourseClick(course.id)}>Buy Now</button>
+            </div>
           ))}
         </div>
       </div>
