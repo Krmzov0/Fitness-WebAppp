@@ -36,15 +36,6 @@ const Courses = () => {
     fetchCourses();
   }, []);
 
-  const handleCourseClick = (courseId) => {
-    router.push(`/courses/${courseId}`);
-  };
-
-  const handleBuyCourse = (courseId) => {
-    router.push(`/courses/${courseId}/checkout`);
-  };
-
-
   return (
     <div className="flex flex-col text-white h-screen">
       <Header />
@@ -57,11 +48,12 @@ const Courses = () => {
             <div
               key={course.id}
             >
-              <button onClick={() => handleCourseClick(course.id)} className='mr-4'>{course.courseName}</button>
-              <button onClick={() => handleCourseClick(course.id)}>Buy Now</button>
+              <button onClick={() => router.push('/courses/muscle-gain')}className='mr-4'>{course.courseName}</button>
             </div>
           ))}
         </div>
+
+        <button onClick={() => router.push('/courses/muscle-gain')}>Muscle Gain Course</button>
       </div>
     </div>
   );
