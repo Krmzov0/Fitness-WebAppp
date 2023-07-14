@@ -48,12 +48,15 @@ const Courses = () => {
             <div
               key={course.id}
             >
-              <button onClick={() => router.push('/courses/muscle-gain')}className='mr-4'>{course.courseName}</button>
+              <button onClick={() => router.push('/courses/muscle-gain')} className='mr-4'>{course.courseName}</button>
             </div>
           ))}
         </div>
 
-        <button onClick={() => router.push('/courses/muscle-gain')}>Muscle Gain Course</button>
+        <div className='flex flex-col w-max'>
+          <button onClick={() => router.push('/courses/muscle-gain')}>Muscle Gain Course</button>
+          <button onClick={() => router.push('/courses/fat-loss')}>Fat Loss Course</button>
+        </div>
       </div>
     </div>
   );
