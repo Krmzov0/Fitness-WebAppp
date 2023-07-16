@@ -1,3 +1,5 @@
+'use clinet'
+
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '@/firebase';

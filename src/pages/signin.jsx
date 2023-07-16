@@ -1,3 +1,5 @@
+'use client'
+
 import Header from '@/components/Header'
 import { auth } from '@/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
