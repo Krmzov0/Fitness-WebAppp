@@ -7,8 +7,11 @@ import { signOut } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { motion } from 'framer-motion';
 import { User } from 'iconsax-react';
+import { useRouter } from 'next/router'
 
 const Profile = () => {
+
+const router = UseRouter();
 
     const [user, setuser] = useAuthState(auth)
 
