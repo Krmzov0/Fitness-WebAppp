@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 const Profile = () => {
 
-const router = UseRouter();
+const router = useRouter();
 
     const [user, setuser] = useAuthState(auth)
 
