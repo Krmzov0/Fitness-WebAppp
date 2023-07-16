@@ -30,7 +30,7 @@ const Profile = () => {
                     </motion.div>
                 }
 
-                <h2 className='mt-2 text-[#fff] cursor-pointer' onClick={() => signOut(auth)}>Sign out</h2>
+               {user ? <h2 className='mt-2 text-[#fff] cursor-pointer' onClick={() => signOut(auth)}>Sign out</h2> : null}
             </div>
         </div >
     )
