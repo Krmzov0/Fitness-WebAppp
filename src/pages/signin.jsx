@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import { auth } from '@/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { Eye, Google } from 'iconsax-react'
+import { Eye, EyeSlash, Google } from 'iconsax-react'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -57,7 +57,7 @@ const Signin = () => {
                                 placeholder="Confirm Password"
 
                             />
-                            <Eye className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />
+                            <EyeSlash className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />
                         </div>
                     </div>
 
