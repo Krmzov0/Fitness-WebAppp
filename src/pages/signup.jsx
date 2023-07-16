@@ -1,4 +1,4 @@
-'use clinet'
+9'use clinet'
 
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
@@ -55,7 +55,7 @@ const Signup = () => {
             </div>
             <div className='w-full sm:w-[45%] h-full flex flex-col justify-center items-start px-6 py-8 relative top-14 sm:top-0 sm:p-28'>
                 <div className='flex flex-col gap-y-3'>
-                    <h1 className='text-4xl sm:text-5xl bold text-[#fff]'>Get Started</h1>
+                    <h1 className='text-4xl sm:text-5xl blackk text-[#fff]'>Get Started</h1>
                     <h2 className='text-md sm:text-lg text-[#ffffff9f]'>Welcome to <span className='text-[#C7FB04] cubano'>KALA<span className='cubano text-white'>FIT</span></span>, create account to start your experience </h2>
                 </div>
 
