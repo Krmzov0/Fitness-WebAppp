@@ -1,5 +1,3 @@
-'use clinet'
-
 import React, { useEffect, useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '@/firebase';
@@ -24,6 +22,7 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
 
+    const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const [error, setError] = useState(null);
@@ -31,13 +30,14 @@ const Signup = () => {
 
     useEffect(() => {
         if (password === confirmPassword) {
-          setpasswordError(null); // Clear the password error if the passwords match
+            setpasswordError(null); // Clear the password error if the passwords match
         }
-      }, [password, confirmPassword]);
+    }, [password, confirmPassword]);
 
     const handleSignUp = async (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
+            setIsLoading(true);
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
@@ -56,6 +56,7 @@ const Signup = () => {
                     setError(null);
                 }
             }
+            setIsLoading(false);
         } else {
             setpasswordError('Passwords do not match');
         }
@@ -125,7 +126,9 @@ const Signup = () => {
                         </div>
                     </div>
 
-                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all' type="submit">Sign Up</button>
+                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all' type="submit">
+                        {isLoading ? 'Creating Account...' : 'Sign Up'}
+                    </button>
                     {error && <div className='ml-1 transition-all text-[#ff4643]'>
                         <p>{error}</p>
                     </div>}

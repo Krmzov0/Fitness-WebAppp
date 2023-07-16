@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useState } from 'react';
 import { Eye, EyeSlash, Google } from 'iconsax-react'
 import { useRouter } from 'next/router'
@@ -12,12 +10,13 @@ const Signin = () => {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null)
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSignIn = async (e) => {
         e.preventDefault();
-
+        setIsLoading(true);
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -29,6 +28,7 @@ const Signin = () => {
                 setError(null);
             }
         }
+        setIsLoading(false);
     };
 
     const googleAuth = new GoogleAuthProvider();
@@ -80,7 +80,9 @@ const Signin = () => {
                             {showPassword ? <Eye onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' /> : <EyeSlash onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />}                        </div>
                     </div>
 
-                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all ' type="submit">Sign In</button>
+                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all ' type="submit">
+                        {isLoading ? 'Logging In...' : 'Sign In'}
+                    </button>
 
                     {error &&
                         <div className='ml-1 transition-all text-[#ff4643]'>
