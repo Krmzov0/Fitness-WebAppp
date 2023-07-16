@@ -66,7 +66,7 @@ const Signin = () => {
                     <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]' type="submit">Sign In</button>
                 </form>
 
-                <div className='mt-5 text-[#ffffff9f] regular flex items-center'>Don't have an account? <button onClick={() => router.push('/signup')} className='cursor-pointer ml-1 text-[#C7FB04]'> Sign up</button></div>
+                <div className='mt-5 text-[#ffffff9f] regular flex items-center'>Don&apos;t have an account? <button onClick={() => router.push('/signup')} className='cursor-pointer ml-1 text-[#C7FB04]'> Sign up</button></div>
             </div>
             <div className='w-full sm:w-[55%] h-full'></div>
         </div>
