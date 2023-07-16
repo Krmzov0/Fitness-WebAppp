@@ -3,7 +3,7 @@
 import React from 'react';
 import Header from '@/components/Header'
 import { auth } from '../firebase'
-import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { motion } from 'framer-motion';
 import { User } from 'iconsax-react';
@@ -12,11 +12,6 @@ const Profile = () => {
 
     const [user, setuser] = useAuthState(auth)
 
-    const googleAuth = new GoogleAuthProvider();
-
-    const signInWithGoogle = async () => {
-        const result = await signInWithPopup(auth, googleAuth);
-    }
 
     return (
         <div className=' h-screen flex flex-col'>
@@ -25,7 +20,7 @@ const Profile = () => {
             <div className='relative top-24 sm:px-10 px-5'>
                 {user ?
                     <h2 className='text-white regular'>{user.displayName}</h2> :
-                    <motion.div onClick={signInWithGoogle}  className='w-max text-[#000] px-4 py-2 bg-[#C7FB04] rounded-xl medium cursor-pointer'  whileHover={{ scale: 1.2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                    <motion.div onClick={() => router.push('/signup')}  className='w-max text-[#000] px-4 py-2 bg-[#C7FB04] rounded-xl medium cursor-pointer'  whileHover={{ scale: 1.2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                         Sign up
                     </motion.div>
                 }
