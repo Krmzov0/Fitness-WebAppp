@@ -13,7 +13,17 @@ const Profile = () => {
 
 const router = useRouter();
 
-    const [user, setuser] = useAuthState(auth)
+    const [user, setuser] = useAuthState(auth);
+
+    const handleDeleteAccount = async () => {
+        try {
+          const user = auth.currentUser;
+          await user.delete();
+          router.push('/'); // Redirect to home page or any other desired location
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 
     return (
@@ -29,6 +39,7 @@ const router = useRouter();
                 }
 
                {user ? <h2 className='mt-2 text-[#fff] cursor-pointer' onClick={() => signOut(auth)}>Sign out</h2> : null}
+               {user ? <h2 className='mt-2 text-[#fff] cursor-pointer' onClick={handleDeleteAccount}>Delete Account</h2> : null}
             </div>
         </div >
     )

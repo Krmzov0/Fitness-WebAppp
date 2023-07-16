@@ -8,6 +8,11 @@
 }
 
 @font-face {
+  font-family: light;
+  src: url('../assets/fonts/OakSans-Light.ttf');
+}
+
+@font-face {
   font-family: regular;
   src: url('../assets/fonts/OakSans-Regular.ttf');
 }
@@ -31,6 +36,13 @@
   font-family: cubano;
 
 }
+
+
+.light {
+  font-family: light;
+
+}
+
 
 .regular {
   font-family: regular;

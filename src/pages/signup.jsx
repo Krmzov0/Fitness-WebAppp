@@ -1,9 +1,9 @@
-9'use clinet'
+'use clinet'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '@/firebase';
-import { Eye, Google } from 'iconsax-react';
+import { Eye, EyeSlash, Google } from 'iconsax-react';
 import { useRouter } from 'next/router';
 import Header from '@/components/Header';
 
@@ -23,7 +23,17 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
+
+    const [showPassword, setShowPassword] = useState(false);
+
     const [error, setError] = useState(null);
+    const [passwordError, setpasswordError] = useState(null);
+
+    useEffect(() => {
+        if (password === confirmPassword) {
+          setpasswordError(null); // Clear the password error if the passwords match
+        }
+      }, [password, confirmPassword]);
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -36,20 +46,29 @@ const Signup = () => {
             } catch (error) {
                 if (error.code === AuthErrorCodes.EMAIL_EXISTS) {
                     setError('Email is already in use');
+                } else {
+                    setError(null);
                 }
 
                 if (error.code === AuthErrorCodes.INVALID_EMAIL) {
                     setError('Invalid Email');
+                } else {
+                    setError(null);
                 }
             }
         } else {
-            console.log('Passwords do not match')
+            setpasswordError('Passwords do not match');
         }
     };
 
 
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+
     return (
-        <div className='w-screen h-screen flex flex-col sm:flex-row '>
+        <div className='w-screen h-full sm:h-screen flex flex-col sm:flex-row '>
             <div className='flex sm:hidden'>
                 <Header />
             </div>
@@ -60,7 +79,7 @@ const Signup = () => {
                 </div>
 
                 <div className='mt-6 w-full'>
-                    <button onClick={signInWithGoogle} className='w-full sm:w-max sm:justify-normal justify-center flex gap-x-3 text-[#fff] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'><Google size="24" color="#fff" variant="Broken" /> Sign in with Google</button>
+                    <button onClick={signInWithGoogle} className='w-full sm:w-max sm:justify-normal justify-center flex gap-x-3 text-[#fff] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'><Google size="24" color="#fff" variant="Broken" /> Sign In with Google</button>
                 </div>
 
                 <form onSubmit={handleSignUp} className='mt-10 w-full flex flex-col gap-y-6' >
@@ -87,29 +106,35 @@ const Signup = () => {
                         <div className='flex relative items-center w-full'>
                             <input
                                 className='flex gap-x-3 bg-[#131313]  placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'
-                                type="password"
-                                placeholder="Confirm Password"
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <Eye className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />
+                            {showPassword ? <Eye onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' /> : <EyeSlash onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />}
                         </div>
                         <div className='flex relative items-center w-full'>
                             <input
                                 className='flex gap-x-3 bg-[#131313]  placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 placeholder="Confirm Password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />
-                            <Eye className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />
+                            {showPassword ? <Eye onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' /> : <EyeSlash onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />}
                         </div>
                     </div>
 
-                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]' type="submit">Sign Up</button>
+                    <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all' type="submit">Sign Up</button>
                     {error && <div className='ml-1 transition-all text-[#ff4643]'>
                         <p>{error}</p>
                     </div>}
+
+                    {passwordError &&
+                        <div className='ml-1 transition-all text-[#ff4643]'>
+                            <p>{passwordError}</p>
+                        </div>
+                    }
                 </form>
 
                 <div className='mt-5 text-[#ffffff9f] regular flex items-center'>Already have an account?<button onClick={() => router.push('/signin')} className='cursor-pointer ml-1 text-[#C7FB04]'> Sign In</button></div>
