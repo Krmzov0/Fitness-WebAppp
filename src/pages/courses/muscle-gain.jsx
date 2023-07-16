@@ -47,7 +47,7 @@ const MuscleGain = () => {
 
   const handleBuyNow = async () => {
     if (!user) {
-      router.push('/');
+      router.push('/profile');
     } else {
       window.location.href = 'https://buy.stripe.com/test_8wM29D0FifpM3ok5kk';
     }

@@ -47,7 +47,7 @@ const fatLoss = () => {
 
   const handleBuyNow = async () => {
     if (!user) {
-      router.push('/login');
+      router.push('/profile');
     } else {
       window.location.href = 'https://buy.stripe.com/test_5kA4hLco0dhEgb6eUV';
     }
