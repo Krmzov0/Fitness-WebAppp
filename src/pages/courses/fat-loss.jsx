@@ -4,7 +4,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db, auth } from '../../firebase'; // Assuming you have imported the db object from your Firebase config file
 import Header from '@/components/Header';
 
-const fatLoss = () => {
+const FatLoss = () => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [courseData, setCourseData] = useState([]);
@@ -81,4 +81,4 @@ const fatLoss = () => {
   );
 };
 
-export default fatLoss;
+export default FatLoss;

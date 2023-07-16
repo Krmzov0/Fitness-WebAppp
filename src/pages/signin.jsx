@@ -13,7 +13,6 @@ const Signin = () => {
 
   const signInWithGoogle = async () => {
       const result = await signInWithPopup(auth, googleAuth);
-
       router.push('/profile');
   }
 
@@ -22,6 +21,7 @@ const Signin = () => {
     <div className='flex sm:hidden'>
         <Header />
     </div>
+    
     <div className='w-full sm:w-[45%] h-full flex flex-col justify-center items-start px-6 py-8 relative top-14 sm:top-0 sm:p-28'>
         <div className='flex flex-col gap-y-3'>
             <h1 className='text-4xl sm:text-5xl regular text-[#fff]'>Sign in</h1>
