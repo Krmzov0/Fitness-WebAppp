@@ -107,7 +107,7 @@ const Signup = () => {
                     </div>
 
                     <button className='w-full justify-center flex medium gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]' type="submit">Sign Up</button>
-                    {error && <div className='mt-3 ml-1 transition-all text-[#ff4643]'>
+                    {error && <div className='ml-1 transition-all text-[#ff4643]'>
                         <p>{error}</p>
                     </div>}
                 </form>
