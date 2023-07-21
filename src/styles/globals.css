@@ -88,8 +88,14 @@ html {
   background-color: #f7f7f715;
 }
 
-.backArrow:hover::after{
+.backArrow:hover::after {
   width: 160%;
   height: 160%;
 }
 
+.header {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(14, 14, 14, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+}
