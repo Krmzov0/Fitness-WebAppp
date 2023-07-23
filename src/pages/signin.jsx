@@ -55,13 +55,13 @@ const Signin = () => {
                 </div>
 
                 <div className='mt-6 w-full'>
-                    <button onClick={signInWithGoogle} className='w-full md:w-max md:justify-normal justify-center flex gap-x-3 text-[#fff] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'><Google size="24" color="#fff" variant="Broken" /> Sign In with Google</button>
+                    <button onClick={signInWithGoogle} className='w-full md:w-max md:justify-normal justify-center flex gap-x-3 text-[#fff] items-center px-6 py-4 rounded-xl border border-[#ffffff15] transition-all hover:border-[#ffffff9f]'><Google size="24" color="#fff" variant="Broken" /> Sign In with Google</button>
                 </div>
 
                 <form onSubmit={handleSignIn} className='mt-10 w-full flex flex-col gap-y-6' >
                     <h2 className='mt-[-14px] left-1 relative text-[#ffffff9f]'>Or Sign In with Email</h2>
                     <input
-                        className='flex gap-x-3 bg-[#131313] placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'
+                        className='flex gap-x-3 bg-[#131313] placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff15] transition-all hover:border-[#ffffff9f]'
                         type="email"
                         placeholder="Email"
                         value={email}
@@ -70,7 +70,7 @@ const Signin = () => {
                     <div className='flex flex-col md:flex-row gap-y-6 items-center gap-x-4'>
                         <div className='flex relative items-center w-full'>
                             <input
-                                className='flex gap-x-3 bg-[#131313]  placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff0c] transition-all hover:border-[#ffffff9f]'
+                                className='flex gap-x-3 bg-[#131313]  placeholder:text-[#ffffff96] text-[#fff] items-center px-4 w-full py-4 rounded-xl border border-[#ffffff15] transition-all hover:border-[#ffffff9f]'
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="Password"
                                 value={password}
@@ -80,7 +80,7 @@ const Signin = () => {
                             {showPassword ? <Eye onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' /> : <EyeSlash onClick={togglePassword} className='absolute right-4 cursor-pointer' size={24} color='#ffffff96' variant='Broken' />}                        </div>
                     </div>
 
-                    <button className='w-full justify-center flex medium text-lg gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff0c] transition-all ' type="submit">
+                    <button className='w-full justify-center flex medium text-lg gap-x-3 text-[#000] bg-[#C7FB04] items-center px-6 py-4 rounded-xl border border-[#ffffff15] transition-all ' type="submit">
                         {isLoading ? 'Logging In...' : 'Sign In'}
                     </button>
 

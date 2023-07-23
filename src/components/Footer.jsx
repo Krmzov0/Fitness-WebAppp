@@ -1,4 +1,3 @@
-import { Facebook, Instagram, Youtube } from 'iconsax-react'
 import React from 'react'
 
 const Footer = () => {
@@ -12,9 +11,9 @@ const Footer = () => {
 
         <div>
           <h1 className='cubano tracking-wider text-[#ffffffb5] text-xl'>GET IN TOUCH</h1>
-          <h1 className='light text-[#fff] text-3xl md:text-4xl mt-5'>hello@kalafit.com</h1>
-          <h1 className='light text-[#fff] text-3xl md:text-4xl mt-5 flex md:hidden '>+389 78 239 880</h1>
-          <h1 className='light text-[#fff] text-3xl md:text-4xl mt-2 md:mt-4'>@thekalafit</h1>
+          <h1 className='light text-[#fff] text-2xl md:text-4xl mt-2 sm:mt-5'>hello@kalafit.com</h1>
+          <h1 className='light text-[#fff] text-2xl md:text-4xl mt-2 flex md:hidden '>+389 78 239 880</h1>
+          <h1 className='light text-[#fff] text-2xl md:text-4xl mt-2 md:mt-4'>@thekalafit</h1>
         </div>
       </div>
 
