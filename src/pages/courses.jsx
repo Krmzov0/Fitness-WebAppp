@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
-import Header from '@/components/Header';
-import { ArrowLeft } from 'iconsax-react';
+import Header from '../components/Header';
 
 const Courses = () => {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
+
+
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -46,7 +47,7 @@ const Courses = () => {
         <div className="flex gap-x-3 mt-3 text-lg">
           {courses.map((course) => (
             <div
-              key={course.id}
+              key={course.id}exit
             >
               <button onClick={() => router.push('/courses/muscle-gain')} className='mr-4'>{course.courseName}</button>
             </div>
